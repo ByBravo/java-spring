@@ -1,0 +1,898 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "commander-micro-inventory",
+    "description": "' Microservice maintainer of products in the store's inventory'",
+    "license": {
+      "name": "Apache-2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    },
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/inventory/v1/user/{idUser}/product/{idProduct}": {
+      "get": {
+        "tags": [
+          "Product"
+        ],
+        "summary": "get the product detail with your id stored in inventory",
+        "description": "get the product detail with your id",
+        "operationId": "getProduct",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "idProduct",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "001L"
+            },
+            "description": "product identifier"
+          },
+          {
+            "in": "path",
+            "name": "idUser",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "01"
+            },
+            "description": "User identifier"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "operation ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProductResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GenericResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GenericResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GenericResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GenericResponse"
+                }
+              }
+            }
+          },
+          "505": {
+            "description": "Service Unavalable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GenericResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Product"
+        ],
+        "summary": "delete the product detail with your id stored in inventory",
+        "description": "delete the product detail with your id",
+        "operationId": "deleteProduct",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "idProduct",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "001L"
+            },
+            "description": "product identifier"
+          },
+          {
+            "in": "path",
+            "name": "idUser",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "01"
+            },
+            "description": "User identifier"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "operation ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProductResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GenericResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GenericResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GenericResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GenericResponse"
+                }
+              }
+            }
+          },
+          "505": {
+            "description": "Service Unavalable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GenericResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Product"
+        ],
+        "summary": "update the product in inventory",
+        "description": "keep the product in inventory",
+        "operationId": "putProduct",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "idUser",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "01"
+            },
+            "description": "User identifier"
+          },
+          {
+            "in": "path",
+            "name": "idProduct",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "001L"
+            },
+            "description": "product identifier"
+          }
+        ],
+        "requestBody": {
+          "description": "Product object that needs to be added to the inventory",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProductRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "operation ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GenericResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GenericResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GenericResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GenericResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GenericResponse"
+                }
+              }
+            }
+          },
+          "505": {
+            "description": "Service Unavalable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GenericResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/inventory/v1/user/{idUser}/product": {
+      "post": {
+        "tags": [
+          "Product"
+        ],
+        "summary": "keep the product in inventory",
+        "description": "keep the product in inventory",
+        "operationId": "postProduct",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "idUser",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "01"
+            },
+            "description": "User identifier"
+          }
+        ],
+        "requestBody": {
+          "description": "Product object that needs to be added to the inventory",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProductRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "operation ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GenericResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GenericResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GenericResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GenericResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GenericResponse"
+                }
+              }
+            }
+          },
+          "505": {
+            "description": "Service Unavalable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GenericResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Product"
+        ],
+        "summary": "get all products stored in inventory",
+        "description": "keep the product in inventory",
+        "operationId": "getProducts",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "idUser",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "01"
+            },
+            "description": "User identifier"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "operation ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProductsResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GenericResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GenericResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GenericResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GenericResponse"
+                }
+              }
+            }
+          },
+          "505": {
+            "description": "Service Unavalable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GenericResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/inventory/v1/user/{idUser}/product/category/{idCategory}": {
+      "get": {
+        "tags": [
+          "Product"
+        ],
+        "summary": "get the products detail with your idCategory stored in inventory",
+        "description": "get the products detail with your idCategory",
+        "operationId": "getProductByCategory",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "idCategory",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "001C"
+            },
+            "description": "Category identifier"
+          },
+          {
+            "in": "path",
+            "name": "idUser",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "01"
+            },
+            "description": "User identifier"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "operation ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProductsResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GenericResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GenericResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GenericResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GenericResponse"
+                }
+              }
+            }
+          },
+          "505": {
+            "description": "Service Unavalable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GenericResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/inventory/v1/user/{idUser}/product/category/{idCategory}/supplier/{idSupplier}": {
+      "get": {
+        "tags": [
+          "Product"
+        ],
+        "summary": "get the products detail with your CategoryIdAndSupplierId stored in inventory",
+        "description": "get the products detail with your CategoryIdAndSupplierId",
+        "operationId": "getProductByCategoryAndSupplier",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "idCategory",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "001C"
+            },
+            "description": "Category identifier"
+          },
+          {
+            "in": "path",
+            "name": "idSupplier",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "001C"
+            },
+            "description": "Supplier identifier"
+          },
+          {
+            "in": "path",
+            "name": "idUser",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "01"
+            },
+            "description": "User identifier"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "operation ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProductsResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GenericResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GenericResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GenericResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GenericResponse"
+                }
+              }
+            }
+          },
+          "505": {
+            "description": "Service Unavalable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GenericResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/inventory/v1/user/{idUser}/product/supplier/{idSupplier}": {
+      "get": {
+        "tags": [
+          "Product"
+        ],
+        "summary": "get the products detail with your idSupplier stored in inventory",
+        "description": "get the products detail with your idSupplier",
+        "operationId": "getProductBySupplier",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "idSupplier",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "001C"
+            },
+            "description": "Supplier identifier"
+          },
+          {
+            "in": "path",
+            "name": "idUser",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "01"
+            },
+            "description": "User identifier"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "operation ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProductsResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GenericResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GenericResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GenericResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GenericResponse"
+                }
+              }
+            }
+          },
+          "505": {
+            "description": "Service Unavalable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GenericResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "GenericResponse": {
+        "title": "GenericResponse",
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string"
+          },
+          "message": {
+            "type": "string"
+          }
+        },
+        "description": "Returning errors or messages"
+      },
+      "ProductResponse": {
+        "title": "ProductResponse",
+        "type": "object",
+        "properties": {
+          "product": {
+            "$ref": "#/components/schemas/Product"
+          }
+        }
+      },
+      "Product": {
+        "title": "Product",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Corresponds to the idProduct of the product"
+          },
+          "barcode": {
+            "type": "string",
+            "description": "Corresponds to the barcode of the product"
+          },
+          "name": {
+            "type": "string",
+            "description": "Corresponds to the name of the product"
+          },
+          "description": {
+            "type": "string",
+            "description": "Corresponds to the description of the product"
+          },
+          "quantity": {
+            "type": "integer",
+            "description": "Corresponds to the quantity of the product on the inventory"
+          },
+          "salePrice": {
+            "type": "integer",
+            "description": "Corresponds to the salePrice of the product"
+          },
+          "purchasePrice": {
+            "type": "integer",
+            "description": "Corresponds to the purchasePrice of the product"
+          },
+          "categoryId": {
+            "type": "string",
+            "description": "Corresponds to the category of the product"
+          },
+          "supplierId": {
+            "type": "string",
+            "description": "Corresponds to the supplierId of the product"
+          },
+          "dateAdded": {
+            "type": "string",
+            "example": "dd/MM/yyyy hh:mm:ss",
+            "description": "Corresponds to the dateAdded of the product"
+          },
+          "lastUpdate": {
+            "type": "string",
+            "example": "dd/MM/yyyy hh:mm:ss",
+            "description": "Corresponds to the last update date of the product"
+          }
+        }
+      },
+      "ProductRequest": {
+        "title": "ProductRequest",
+        "type": "object",
+        "properties": {
+          "barcode": {
+            "type": "string",
+            "description": "Corresponds to the barcode of the product"
+          },
+          "name": {
+            "type": "string",
+            "description": "Corresponds to the name of the product"
+          },
+          "description": {
+            "type": "string",
+            "description": "Corresponds to the description of the product"
+          },
+          "quantity": {
+            "type": "integer",
+            "description": "Corresponds to the quantity of the product on the inventory"
+          },
+          "salePrice": {
+            "type": "integer",
+            "description": "Corresponds to the salePrice of the product"
+          },
+          "purchasePrice": {
+            "type": "integer",
+            "description": "Corresponds to the purchasePrice of the product"
+          },
+          "categoryId": {
+            "type": "string",
+            "description": "Corresponds to the category of the product"
+          },
+          "supplierId": {
+            "type": "string",
+            "description": "Corresponds to the supplierId of the product"
+          }
+        }
+      },
+      "ProductsResponse": {
+        "title": "ProductsResponse",
+        "type": "object",
+        "properties": {
+          "products": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Product"
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,43 @@
+<!-- ejecutame con: -->
+<!--
+    mvn openapi-generator:generate -f server-generator.xml
+ -->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>commander-micro-inventory</groupId>
+    <artifactId>micro-inventory</artifactId>
+    <version>1.0.0</version>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.openapitools</groupId>
+                <artifactId>openapi-generator-maven-plugin</artifactId>
+                <version>4.3.1</version>
+                <configuration>
+                    <inputSpec>specification-commander-micro-inventory.json</inputSpec>
+                    <generatorName>spring</generatorName>
+                    <output>${project.basedir}</output>
+                    <generateApis>true</generateApis>
+                    <generateApiTests>true</generateApiTests>
+                    <configOptions>
+                        <basePackage>cl.commander.micro_inventory.main</basePackage>
+                        <modelPackage>cl.commander.micro_inventory.viewmodel</modelPackage>
+                        <apiPackage>cl.commander.micro_inventory.controller</apiPackage>
+                        <configPackage>cl.commander.micro_inventory.configuration</configPackage>
+                        <groupId>commander-micro-inventory</groupId>
+                        <artifactId>micro-inventory</artifactId>
+                        <artifactVersion>1.0.0</artifactVersion>
+                        <skipDefaultInterface>true</skipDefaultInterface>
+                        <useTags>true</useTags>
+                        <useBeanValidation>true</useBeanValidation>
+                        <performBeanValidation>true</performBeanValidation>
+                        <developerName>Byron Bravo</developerName>
+                        <developerEmail>by.bravoe@gmail.com</developerEmail>
+                        <library>spring-boot</library>
+                        <hideGenerationTimestamp>true</hideGenerationTimestamp>
+                    </configOptions>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>

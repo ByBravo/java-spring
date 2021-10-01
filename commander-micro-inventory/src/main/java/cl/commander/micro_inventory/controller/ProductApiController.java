@@ -73,8 +73,14 @@ public class ProductApiController implements ProductApi {
 
     @Override
     public ResponseEntity<ProductsResponse> getProducts(String idUser) {
-        // TODO Auto-generated method stub
-        return null;
+        
+
+        String prefix="[getProducts][user:"+idUser+"]";
+        ProductsResponse response = new ProductsResponse();
+        logger.info(prefix +" starting");
+        response.getProducts().addAll(productService.getAllProducts(idUser));
+        logger.info(prefix +" end");
+        return new ResponseEntity<ProductsResponse>(response, HttpStatus.OK);
     }
 
     @Override

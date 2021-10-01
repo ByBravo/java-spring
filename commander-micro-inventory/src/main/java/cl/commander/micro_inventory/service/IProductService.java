@@ -1,5 +1,8 @@
 package cl.commander.micro_inventory.service;
 
+import java.util.List;
+
+import cl.commander.micro_inventory.viewmodel.Product;
 import cl.commander.micro_inventory.viewmodel.ProductRequest;
 
 public interface IProductService {
@@ -23,5 +26,15 @@ public interface IProductService {
 	 * @return 
 	 */
     public void deleteProduct(String idClient, String idProduct);
+
+
+
+	 /**
+	 * GetAll customer's products
+	 * 
+	 * @param idClient id user or client or customer
+	 * @return 
+	 */
+    public List<Product> getAllProducts(String idClient);
 
 }

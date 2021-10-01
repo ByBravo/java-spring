@@ -1,5 +1,7 @@
 package cl.commander.micro_inventory.repository;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
@@ -18,5 +20,8 @@ public interface IProductRepository extends JpaRepository<Product,Long>{
 	@Query(value = "DELETE FROM inventory.product\n"
     +"WHERE ID =:ID AND user_id =:USERID", nativeQuery = true)
 	public void deleteByIdProductAndUser(@Param("ID") Integer idProduct,@Param("USERID")String userId);
+
+
+    public List<Product> findAllByUserId(String userId);
 	
 }

@@ -1,7 +1,9 @@
 package cl.commander.micro_inventory.service.impl;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -59,6 +61,46 @@ public class ProductServiceImpl implements IProductService {
         long afterDeleteSize = repository.count();
         logger.info("afterDeleteSize :" +afterDeleteSize);
 
+    }
+
+    @Override
+    public List<cl.commander.micro_inventory.viewmodel.Product> getAllProducts(String idClient) {
+
+        List<cl.commander.micro_inventory.viewmodel.Product> responseList = new ArrayList<cl.commander.micro_inventory.viewmodel.Product>();
+        
+        List<Product> result = repository.findAllByUserId(idClient);
+
+        if(null != result && !result.isEmpty()){
+            logger.info("[USER:"+idClient+"] have " +result.size()+" product(s) stored");
+            for (Product product : result) {
+                logger.info("[USER:"+idClient+"] product : " +product.getId());
+                cl.commander.micro_inventory.viewmodel.Product p= new cl.commander.micro_inventory.viewmodel.Product();
+                p.setBarcode(product.getBarcode());
+                p.setCategoryId(product.getCategoryId());
+                p.setDateAdded(product.getDateAdded().toString());
+                p.setDescription(product.getDescription());
+                p.setId(product.getId().toString());
+    
+                if(null != product.getLastUpdate()){
+                    p.setLastUpdate(product.getLastUpdate().toString());
+                }else{
+                    p.setLastUpdate("");
+                }
+            
+                p.setName(product.getName());
+                p.setPurchasePrice(product.getPurchasePrice());
+                p.setQuantity(product.getQuantity());
+                p.setSalePrice(product.getSalePrice());
+                p.setSupplierId(product.getSupplierId());
+    
+                responseList.add(p);
+            }
+        }else{
+            logger.info("[USER:"+idClient+"] does not have product(s) stored");
+        }
+
+        return responseList;
+        
     }
     
 }

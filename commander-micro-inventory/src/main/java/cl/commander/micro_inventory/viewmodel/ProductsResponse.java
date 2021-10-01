@@ -43,6 +43,10 @@ public class ProductsResponse   {
   @Valid
 
   public List<Product> getProducts() {
+
+    if (this.products == null) {
+      this.products = new ArrayList<>();
+    }
     return products;
   }
 

@@ -30,9 +30,20 @@ public class ProductApiController implements ProductApi {
     private IProductService productService;
 
     @Override
-    public ResponseEntity<ProductResponse> deleteProduct(String idProduct, String idUser) {
-        // TODO Auto-generated method stub
-        return null;
+    public ResponseEntity<GenericResponse> deleteProduct(String idProduct, String idUser) {
+
+
+        GenericResponse response = new GenericResponse();
+        String prefix="[deleteProduct][user:"+idUser+"][idProduct:"+idProduct+"]";
+        logger.info(prefix +" starting ");
+        logger.info(prefix +" deleting product");
+        productService.deleteProduct(idUser,idProduct);
+
+        response.setCode("SUCCESS");
+        response.setMessage("the product was remove from the stored correctly");
+        logger.info(prefix +"  end");
+
+        return new ResponseEntity<GenericResponse>(response, HttpStatus.OK);
     }
 
     @Override
@@ -72,7 +83,7 @@ public class ProductApiController implements ProductApi {
         GenericResponse response = new GenericResponse();
         String prefix="[postProduct][user:"+idUser+"]";
         logger.info(prefix +" starting ");
-        logger.info(prefix +" saving product");
+        logger.info(prefix +" saving product :"+productRequest.getName());
         productService.saveProduct(idUser,productRequest);
 
         response.setCode("SUCCESS");

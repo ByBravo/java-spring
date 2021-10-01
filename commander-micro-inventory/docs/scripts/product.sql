@@ -1,13 +1,15 @@
-CREATE TABLE IF NOT EXISTS PRODUCT (
-    ID SERIAL PRIMARY KEY,
-    BARCODE VARCHAR ( 250 ) NOT NULL,
-    NAME VARCHAR ( 250 ) NOT NULL,
-    DESCRIPTION VARCHAR ( 250 ) NOT NULL,
-    QUANTITY INTEGER NOT NULL,
-    SALE_PRICE INTEGER NOT NULL,
-    PURCHASE_PRICE INTEGER NOT NULL,
-    CATEGORY_ID VARCHAR ( 50 ) NOT NULL,
-    SUPPLIER_ID VARCHAR ( 50 ) NOT NULL,
-    DATE_ADDED TIMESTAMP NOT NULL,
-    LAST_UPDATE TIMESTAMP
+CREATE TABLE inventory.product (
+	id serial NOT NULL,
+	USER_ID VARCHAR ( 250 ) NOT null,
+	barcode varchar(250) NOT NULL,
+	name varchar(250) NOT NULL,
+	description varchar(250) NOT NULL,
+	quantity int4 NOT NULL,
+	sale_price int4 NOT NULL,
+	purchase_price int4 NOT NULL,
+	category_id varchar(50) NOT NULL,
+	supplier_id varchar(50) NOT NULL,
+	date_added timestamp NOT NULL,
+	last_update timestamp NULL,
+	CONSTRAINT product_pkey PRIMARY KEY (id)
 );

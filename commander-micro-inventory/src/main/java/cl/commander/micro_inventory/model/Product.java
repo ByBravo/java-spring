@@ -26,6 +26,9 @@ public class Product implements Serializable {
     @Column(name="ID", unique=true, nullable=false)
     private Long id;
   
+    @Column(name="user_id")
+    private String userId;
+
     @Column(name="BARCODE")
     private String barcode;
 
@@ -142,6 +145,14 @@ public class Product implements Serializable {
 
     public void setLastUpdate(Timestamp lastUpdate) {
         this.lastUpdate = lastUpdate;
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 
 

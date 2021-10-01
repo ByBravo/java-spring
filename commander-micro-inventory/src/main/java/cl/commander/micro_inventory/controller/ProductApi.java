@@ -50,7 +50,7 @@ public interface ProductApi {
      */
     @ApiOperation(value = "delete the product detail with your id stored in inventory", nickname = "deleteProduct", notes = "delete the product detail with your id", response = ProductResponse.class, tags={ "Product", })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "operation ok", response = ProductResponse.class),
+        @ApiResponse(code = 200, message = "operation ok", response = GenericResponse.class),
         @ApiResponse(code = 400, message = "Bad Request", response = GenericResponse.class),
         @ApiResponse(code = 401, message = "unauthorized", response = GenericResponse.class),
         @ApiResponse(code = 404, message = "Not Found", response = GenericResponse.class),
@@ -59,7 +59,7 @@ public interface ProductApi {
     @RequestMapping(value = "/inventory/v1/user/{idUser}/product/{idProduct}",
         produces = { "application/json" }, 
         method = RequestMethod.DELETE)
-    ResponseEntity<ProductResponse> deleteProduct(@ApiParam(value = "product identifier",required=true) @PathVariable("idProduct") String idProduct,@ApiParam(value = "User identifier",required=true) @PathVariable("idUser") String idUser);
+    ResponseEntity<GenericResponse> deleteProduct(@ApiParam(value = "product identifier",required=true) @PathVariable("idProduct") String idProduct,@ApiParam(value = "User identifier",required=true) @PathVariable("idUser") String idUser);
 
 
     /**

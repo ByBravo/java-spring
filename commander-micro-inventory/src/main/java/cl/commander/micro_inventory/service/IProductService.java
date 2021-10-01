@@ -15,21 +15,13 @@ public interface IProductService {
     public void saveProduct(String idClient,ProductRequest in);
 
 
-    // /**
-	//  * Get a customer's product
-	//  * 
-	//  * @param idClient idClient
-	//  * @return 
-	//  */
-    // public void getProduct(String idClient);
+	 /**
+	 * Delete a customer's product
+	 * 
+	 * @param idClient id user or client or customer
+     * @param idProduct product identifier
+	 * @return 
+	 */
+    public void deleteProduct(String idClient, String idProduct);
 
-    // /**
-	//  * Update a customer's product
-	//  * 
-	//  * @param idClient idClient
-	//  * @return 
-	//  */
-    // public void updProduct(String idClient);
-
-    
 }
